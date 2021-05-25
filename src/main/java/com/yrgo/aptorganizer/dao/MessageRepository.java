@@ -6,12 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface MessageRepository extends JpaRepository<Message, String> {
+public interface MessageRepository extends JpaRepository<Message, Integer> {
 
-    @Query("SELECT msg FROM appointment ORDER BY timeOfMeeting, date")
+    @Query("SELECT msg FROM Message msg ORDER BY time, date")
     List<Message> messagesInOrder();
-
-    @Query("SELECT id FROM appointment")
-    List<Message> findById();
 
 }
